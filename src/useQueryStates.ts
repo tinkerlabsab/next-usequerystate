@@ -137,7 +137,7 @@ export function useQueryStates<KeyMap extends UseQueryStatesKeysMap>(
           search
         },
         {
-          pathname: window.location.pathname,
+          pathname: router.pathname,
           hash,
           search
         },

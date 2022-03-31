@@ -266,7 +266,7 @@ export function useQueryState<T = string>(
           search
         },
         {
-          pathname: window.location.pathname,
+          pathname: router.pathname,
           hash,
           search
         },
