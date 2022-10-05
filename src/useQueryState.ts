@@ -261,12 +261,12 @@ export function useQueryState<T = string>(
       return updateUrl?.call(
         router,
         {
-          pathname: router.pathname,
+          pathname: window.location.pathname,
           hash,
           search
         },
         {
-          pathname: router.pathname,
+          pathname: window.location.pathname,
           hash,
           search
         },
