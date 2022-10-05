@@ -104,11 +104,11 @@ function useQueryState(key, { history = 'replace', parse = x => x, serialize = S
         const search = query.toString();
         const hash = window.location.hash;
         return updateUrl === null || updateUrl === void 0 ? void 0 : updateUrl.call(router, {
-            pathname: router.pathname,
+            pathname: window.location.pathname,
             hash,
             search
         }, {
-            pathname: router.pathname,
+            pathname: window.location.pathname,
             hash,
             search
         }, transitionOptions);
