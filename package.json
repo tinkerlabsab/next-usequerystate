@@ -59,7 +59,6 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/webpack": "^5.28.0",
-    "commitlint": "^16.2.1",
     "cypress": "^9.5.0",
     "husky": "7.x",
     "jest": "^27.5.1",
@@ -87,45 +86,5 @@
     "tabWidth": 2,
     "trailingComma": "none",
     "useTabs": false
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "build",
-          "chore",
-          "ci",
-          "clean",
-          "doc",
-          "feat",
-          "fix",
-          "perf",
-          "ref",
-          "revert",
-          "style",
-          "test"
-        ]
-      ],
-      "subject-case": [
-        0,
-        "always",
-        "sentence-case"
-      ],
-      "body-leading-blank": [
-        2,
-        "always",
-        true
-      ]
-    }
   }
 }

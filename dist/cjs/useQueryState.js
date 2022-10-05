@@ -108,7 +108,7 @@ function useQueryState(key, { history = 'replace', parse = x => x, serialize = S
             hash,
             search
         }, {
-            pathname: window.location.pathname.replace(router.basePath, ""),
+            pathname: router.pathname,
             hash,
             search
         }, transitionOptions);
