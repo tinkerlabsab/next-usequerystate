@@ -252,10 +252,14 @@ export function useQueryState<T = string>(
       const query = new URLSearchParams(window.location.search)
       query.delete(key)
 
+      const qs = query.toString();
+
+      const newHref = window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + (!qs ? '' : '&' + qs) : (!qs ? '' : '?' + qs));
+
       return updateUrl?.call(
         router,
-        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + (query.keys.length === 0 ? '' : '&' + query.toString()) : (query.keys.length === 0 ? '' : '?' + query.toString())),
-        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + (query.keys.length === 0 ? '' : '&' + query.toString()) : (query.keys.length === 0 ? '' : '?' + query.toString())),
+        newHref,
+        newHref,
         transitionOptions
       )
     },
