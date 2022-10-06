@@ -254,8 +254,8 @@ export function useQueryState<T = string>(
 
       return updateUrl?.call(
         router,
-        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + '&' + query.toString() : (query.keys.length === 0 ? '' : '?' + query.toString())),
-        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + '&' + query.toString() : (query.keys.length === 0 ? '' : '?' + query.toString())),
+        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + (query.keys.length === 0 ? '' : '&' + query.toString()) : (query.keys.length === 0 ? '' : '?' + query.toString())),
+        window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) + (query.keys.length === 0 ? '' : '&' + query.toString()) : (query.keys.length === 0 ? '' : '?' + query.toString())),
         transitionOptions
       )
     },
