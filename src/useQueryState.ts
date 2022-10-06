@@ -250,25 +250,20 @@ export function useQueryState<T = string>(
       // unnecessary renders when other query parameters change.
       // URLSearchParams is already polyfilled by Next.js
       const query = new URLSearchParams(window.location.search)
-      if (newValue === null) {
-        // Don't leave value-less keys hanging
-        query.delete(key)
-      } else {
-        query.set(key, serialize(newValue))
-      }
-      const search = query.toString()
+      query.delete(key)
+
       const hash = window.location.hash
       return updateUrl?.call(
         router,
         {
-          pathname: window.location.pathname,
+          pathname: window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) : ''),
           hash,
-          search
+          search: query.toString(),
         },
         {
-          pathname: window.location.pathname,
+          pathname: window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) : ''),
           hash,
-          search
+          search: query.toString(),
         },
         transitionOptions
       )

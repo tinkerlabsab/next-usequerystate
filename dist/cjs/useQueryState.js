@@ -94,23 +94,16 @@ function useQueryState(key, { history = 'replace', parse = x => x, serialize = S
         // unnecessary renders when other query parameters change.
         // URLSearchParams is already polyfilled by Next.js
         const query = new URLSearchParams(window.location.search);
-        if (newValue === null) {
-            // Don't leave value-less keys hanging
-            query.delete(key);
-        }
-        else {
-            query.set(key, serialize(newValue));
-        }
-        const search = query.toString();
+        query.delete(key);
         const hash = window.location.hash;
         return updateUrl === null || updateUrl === void 0 ? void 0 : updateUrl.call(router, {
-            pathname: window.location.pathname,
+            pathname: window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) : ''),
             hash,
-            search
+            search: query.toString(),
         }, {
-            pathname: window.location.pathname,
+            pathname: window.location.pathname + (newValue !== null ? '?' + key + '=' + serialize(newValue) : ''),
             hash,
-            search
+            search: query.toString(),
         }, transitionOptions);
     }, [key, updateUrl]);
     return [(_a = value !== null && value !== void 0 ? value : defaultValue) !== null && _a !== void 0 ? _a : null, update];
